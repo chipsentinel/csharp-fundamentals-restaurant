@@ -31,6 +31,12 @@ mono_crash.*
 bin/x64/
 obj/x64/
 
+# Agrego rutas para asegurarme que en mi distribucion de ficheros son ignorados
+bin/
+obj/
+# .vs/  ya esta en la linea 65
+.idea/
+
 [Dd]ebug/x86/
 [Dd]ebugPublic/x86/
 [Rr]elease/x86/
