@@ -27,6 +27,7 @@ mono_crash.*
 [Dd]ebugPublic/x64/
 [Rr]elease/x64/
 [Rr]eleases/x64/
+# Estos datos estan añadidos al haber creado en el repositor en el apartado de gitignored VisualStudio
 bin/x64/
 obj/x64/
 
