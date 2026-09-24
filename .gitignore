@@ -27,8 +27,15 @@ mono_crash.*
 [Dd]ebugPublic/x64/
 [Rr]elease/x64/
 [Rr]eleases/x64/
+# Estos datos estan añadidos al haber creado en el repositor en el apartado de gitignored VisualStudio
 bin/x64/
 obj/x64/
+
+# Agrego rutas para asegurarme que en mi distribucion de ficheros son ignorados
+bin/
+obj/
+# .vs/  ya esta en la linea 65
+.idea/
 
 [Dd]ebug/x86/
 [Dd]ebugPublic/x86/
