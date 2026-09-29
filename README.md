@@ -25,8 +25,8 @@ Restaurante/
 ├── MenuApp.cs
 ├── Restaurante.csproj
 ├── Models/
+│   ├── Producto.cs
 │   ├── Productos/
-│   │   ├── Producto.cs
 │   │   ├── Bebida.cs
 │   │   ├── PlatoPrincipal.cs
 │   │   ├── Postre.cs
@@ -59,7 +59,13 @@ Pedido
 
 ## Namespaces
 
-Las clases de productos pertenecen a:
+La clase base `Producto` pertenece a:
+
+```csharp
+namespace Restaurante.Models;
+```
+
+Las clases concretas de productos pertenecen a:
 
 ```csharp
 namespace Restaurante.Models.Productos;
@@ -110,6 +116,47 @@ public class Bebida : Producto
 ```
 
 La expresión `: Producto` indica herencia. `Bebida` recibe las propiedades de `Producto` y más adelante podrá añadir propiedades o métodos propios. En Java, la idea equivalente se expresa con `extends`.
+
+`Producto` también define un método abstracto:
+
+```csharp
+public abstract string ObtenerDescripcion();
+```
+
+Este método es un contrato: cada clase concreta que herede de `Producto` debe proporcionar su propia implementación. Para cumplirlo se utiliza `override`:
+
+```csharp
+public override string ObtenerDescripcion()
+{
+	return $"{Nombre} - {Precio} €";
+}
+```
+
+El método devuelve un texto (`string`) y la expresión `$"..."` permite insertar propiedades dentro de una cadena. En Java existe una idea equivalente mediante la redefinición de métodos heredados.
+
+`Entrante` añade propiedades que no son comunes a todos los productos:
+
+```csharp
+public int NumeroPersonas { get; set; }
+public bool SeSirveFrio { get; set; }
+```
+
+El operador ternario permite elegir entre dos textos según un valor booleano:
+
+```csharp
+string temperatura = SeSirveFrio ? "frío" : "caliente";
+```
+
+Un `Combo` también es un `Producto`, pero está compuesto por otros productos. Por eso utiliza composición además de herencia:
+
+```csharp
+public void AgregarProducto(Producto producto)
+{
+	productos.Add(producto);
+}
+```
+
+Al mostrar un combo se recorre su lista con `foreach` y se llama a `ObtenerDescripcion()` de cada elemento. Como la lista es de tipo `Producto`, pero puede contener bebidas, entrantes o postres, este recorrido demuestra el polimorfismo.
 
 Para crear un objeto se utiliza `new`:
 
@@ -233,6 +280,43 @@ Esta prueba verifica que:
 
 No es todavía la aplicación completa. Es una prueba temporal de la estructura y puede evolucionar cuando se empiece a crear la carta.
 
+## Rama `feature/entrantes`
+
+La primera funcionalidad del ejercicio consiste en crear la clase `Entrante` y probar tres productos desde `Program.cs`:
+
+```csharp
+Entrante patatas = new Entrante();
+patatas.Nombre = "Patatas bravas";
+patatas.Precio = 6.00m;
+patatas.NumeroPersonas = 2;
+patatas.SeSirveFrio = false;
+Console.WriteLine(patatas.ObtenerDescripcion());
+
+Entrante nachos = new Entrante();
+nachos.Nombre = "Nachos";
+nachos.Precio = 7.00m;
+nachos.NumeroPersonas = 2;
+nachos.SeSirveFrio = false;
+Console.WriteLine(nachos.ObtenerDescripcion());
+
+Entrante ensaladilla = new Entrante();
+ensaladilla.Nombre = "Ensaladilla rusa";
+ensaladilla.Precio = 5.50m;
+ensaladilla.NumeroPersonas = 2;
+ensaladilla.SeSirveFrio = true;
+Console.WriteLine(ensaladilla.ObtenerDescripcion());
+```
+
+La salida comprobada es:
+
+```text
+Patatas bravas - 6,00 € para 2 personas, servido caliente
+Nachos - 7,00 € para 2 personas, servido caliente
+Ensaladilla rusa - 5,50 € para 2 personas, servido frío
+```
+
+Los precios son valores de ejemplo. Lo importante en esta prueba es comprobar la herencia, las propiedades propias de `Entrante`, el método `ObtenerDescripcion()` y el uso de `bool` para indicar la temperatura.
+
 ## Comprobaciones antes de cerrar una rama
 
 Antes de hacer un commit se recomienda ejecutar:
@@ -261,11 +345,11 @@ git commit -m "Prepara la estructura base del restaurante"
 git push origin feature/project-setup
 ```
 
-Las siguientes ramas representarán funcionalidades completas y no ejercicios aislados. Por ejemplo:
+Las siguientes ramas representan funcionalidades completas y no ejercicios aislados. La rama actual termina la funcionalidad de entrantes; la siguiente será la carta del restaurante:
 
 ```text
 feature/entrantes
-feature/carta
+feature/carta-restaurante
 feature/menu
 feature/pedidos
 ```
