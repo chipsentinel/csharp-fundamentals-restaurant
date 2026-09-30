@@ -1,4 +1,5 @@
-﻿using Restaurante.Models.Productos;
+﻿using Restaurante.Models;
+using Restaurante.Models.Productos;
 
 // Esta prueba confirma que Program puede utilizar las clases de Productos.
 Bebida bebida = new Bebida();
@@ -27,3 +28,17 @@ ensaladilla.NumeroPersonas = 2;
 ensaladilla.SeSirveFrio = true;
 Console.WriteLine(ensaladilla.ObtenerDescripcion());
 
+
+
+
+Carta miCarta = new Carta();
+string tituloCarta = "\n=== CARTA DEL RESTAURANTE ===";
+Console.WriteLine(tituloCarta);
+Console.WriteLine(miCarta.ObtenerDescripcion());
+
+miCarta.AgregarProductoCarta(bebida);
+miCarta.AgregarProductoCarta(patatas);
+miCarta.AgregarProductoCarta(nachos);
+miCarta.AgregarProductoCarta(ensaladilla);
+
+Console.WriteLine(miCarta.ObtenerDescripcion());
