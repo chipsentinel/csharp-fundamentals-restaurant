@@ -14,6 +14,7 @@ public class Carta
 
     // Un pedido contiene productos, pero no hereda de Producto.
     private List<Producto> carta = new List<Producto>();
+
     
     public string ObtenerDescripcion()
     {
@@ -22,6 +23,7 @@ public class Carta
         // Se utiliza el método real de cada producto: esto demuestra polimorfismo.
         foreach (Producto producto in carta)
         {
+
             descripcion += $"\n  - {producto.ObtenerDescripcion()}";
         }
 

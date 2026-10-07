@@ -2,11 +2,17 @@
 using Restaurante.Models.Productos;
 
 // Esta prueba confirma que Program puede utilizar las clases de Productos.
-Bebida bebida = new Bebida();
-bebida.Nombre = "Coca-Cola";
-Console.WriteLine(bebida.Nombre);
 
 
+// Bebidas
+Bebida cocacola = new Bebida();
+cocacola.Nombre = "Coca-Cola";
+Console.WriteLine(cocacola.Nombre);
+Bebida agua = new Bebida();
+agua.Nombre = "Agua mineral";
+Console.WriteLine(agua.Nombre);
+
+// Entratnes
 Entrante patatas = new Entrante();
 patatas.Nombre = "Patatas bravas";
 patatas.Precio = 6.00m;
@@ -33,10 +39,13 @@ Console.WriteLine(ensaladilla.ObtenerDescripcion());
 
 Carta miCarta = new Carta();
 string tituloCarta = "\n=== CARTA DEL RESTAURANTE ===";
-Console.WriteLine(tituloCarta);
+Console.Write(tituloCarta);
 Console.WriteLine(miCarta.ObtenerDescripcion());
+// Bebidas
+miCarta.AgregarProductoCarta(cocacola);
+miCarta.AgregarProductoCarta(agua);
 
-miCarta.AgregarProductoCarta(bebida);
+// Entratnes
 miCarta.AgregarProductoCarta(patatas);
 miCarta.AgregarProductoCarta(nachos);
 miCarta.AgregarProductoCarta(ensaladilla);
