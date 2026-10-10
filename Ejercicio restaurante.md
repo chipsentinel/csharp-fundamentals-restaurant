@@ -83,7 +83,9 @@ Tarta de queso - 5 €
 Responder:
 
 1. ¿Por qué una `List<Producto>` puede contener objetos de tipo `Bebida`, `Postre`, `PlatoPrincipal` o `Entrante`?
+List<Producto> acepta los objetos bebida, entrante... porque eredan de la clase Producto
 2. ¿Qué relación existe entre estas clases y `Producto`?
+Producto clase padre y los tipos de productos son calses hijas de esta.
 
 ---
 
