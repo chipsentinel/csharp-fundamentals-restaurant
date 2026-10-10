@@ -19,14 +19,13 @@ public class Carta
     public string ObtenerDescripcion()
     {
         string descripcion = "";
-
+        int contador = 1;
         // Se utiliza el método real de cada producto: esto demuestra polimorfismo.
         foreach (Producto producto in carta)
         {
-
-            descripcion += $"\n  - {producto.ObtenerDescripcion()}";
+            descripcion += $"\n  {contador}. {producto.ObtenerDescripcion()}";
+            contador++;
         }
-
         return descripcion;
     }
 }
