@@ -1,7 +1,6 @@
-using System.Runtime.InteropServices;
 using Restaurante.Models;
 
-namespace Restaurante.Models;
+namespace Restaurante.Models.Productos;
 
 public class Carta
 {  
@@ -23,9 +22,10 @@ public class Carta
         // Se utiliza el método real de cada producto: esto demuestra polimorfismo.
         foreach (Producto producto in carta)
         {
-            descripcion += $"\n  {contador}. {producto.ObtenerDescripcion()}";
-            contador++;
+            if (producto is Bebida)
+                descripcion += $"\n  {contador}. {producto.ObtenerDescripcion()}";
+                contador++;
         }
         return descripcion;
-    }
+     }
 }

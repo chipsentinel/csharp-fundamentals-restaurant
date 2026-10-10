@@ -126,8 +126,13 @@ Mostrar la descripción completa de cada bebida encontrada.
 Responder:
 
 1. ¿Qué tipo tiene la variable utilizada para recorrer la `List<Producto>`?
+La variable es de tipo Producto y representa un producto de la lista en cada vuelta
+
 2. ¿Puede esa variable contener un objeto cuyo tipo real sea `Bebida`?
+Sí, porque Bebida es una clase hija de Producto
+
 3. ¿Qué permite comprobar el operador `is`?
+Si, is comprueba si el producto es una Bebida. Si devuelve true, se añade su descripción al imprimir en pantalla.
 
 ---
 
