@@ -153,11 +153,22 @@ Console.WriteLine(producto3.ObtenerDescripcion());
 Sin ejecutar inicialmente el programa, responder:
 
 1. ¿Cuál es el tipo de la variable `producto1`?
+Producto
+
 2. ¿Cuál es el tipo real del objeto almacenado en `producto1`?
+Bebida
+
 3. ¿Qué implementación de `ObtenerDescripcion()` se ejecutará?
+Se ejecutará el método ObtenerDescripcion() de Bebida
+
 4. ¿Qué ocurrirá con `producto2`?
+Mostraria un postre y su descripcion 
+
 5. ¿Qué ocurrirá con `producto3`?
+Igual que en producto1 y 2 pero en este caso se vera un Entrante
+
 6. ¿Qué concepto de programación orientada a objetos permite este comportamiento?
+El polimorfismo permite que una variable de tipo Producto use la versión del método que corresponde al objeto real. Las clases hijas definen esa versión con override
 
 Después de responder, ejecutar el código y comprobar el resultado.
 
