@@ -84,3 +84,18 @@ miCarta.AgregarProductoCarta(sorbete);
 
 
 Console.WriteLine(miCarta.ObtenerDescripcion());
+
+// El signo ? indica que el método puede devolver un Producto o null si la selección no es válida.
+Producto? productoElegido = miCarta.SeleccionarProductoCarta();
+
+
+if (productoElegido != null)
+{
+    Console.WriteLine("\nHas elegido:");
+    Console.WriteLine(productoElegido.ObtenerDescripcion());
+}
+else
+{
+    Console.WriteLine("Debes introducir un número.");
+}
+
