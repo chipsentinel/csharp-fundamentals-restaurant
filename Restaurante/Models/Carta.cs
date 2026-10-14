@@ -79,9 +79,9 @@ public class Carta
     public void BuscarProductoPorPrecio()
     {
         Console.Write("\n Precio máximo:");
-        string entrada = Console.ReadLine();
+        string buscarProductoPorPrecio = Console.ReadLine();
 
-        if(!decimal.TryParse(entrada, out decimal precioMaximo))
+        if(!decimal.TryParse(buscarProductoPorPrecio, out decimal precioMaximo))
         {
             Console.WriteLine("Debes introducir un precio válido");
             return;
@@ -102,7 +102,27 @@ public class Carta
 
         if (!encontrado)
         {
-            Console.Write("No hay productos con rango de precio maximo");
+            Console.Write("No hay productos en ese rango de precio");
+        }
+    }
+
+    public void ProductoMasCaro()
+    {
+        Producto? productoMasCaro = null; // Usamos null porque al principio todavia no hemos encontrado ningún producto.
+
+        // Comparamos cada producto y conservamos el de mayor precio.
+        foreach (Producto producto in carta)
+        {
+            if (productoMasCaro == null || producto.Precio > productoMasCaro.Precio)
+            {
+                productoMasCaro = producto;
+            }
+        }
+
+        if (productoMasCaro != null)
+        {
+            Console.WriteLine("\n El producto más caro es:");
+            Console.WriteLine($"{productoMasCaro.Nombre} - {productoMasCaro.Precio} €");
         }
     }
 }

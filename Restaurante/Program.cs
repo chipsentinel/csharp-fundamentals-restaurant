@@ -85,6 +85,7 @@ miCarta.AgregarProductoCarta(sorbete);
 
 Console.WriteLine(miCarta.ObtenerDescripcion());
 
+/*
 // SeleccionarProductoCarta
 // El signo ? indica que el método puede devolver un Producto o null si la selección no es válida.
 Producto? productoEncontradoPorNumero = miCarta.SeleccionarProductoCarta();
@@ -112,3 +113,6 @@ Producto? productoEncontradoPorNombre = miCarta.BuscarProductoPorNombre();
 
 // BuascarProductoPorPrecio
 miCarta.BuscarProductoPorPrecio();
+*/
+// ProductoMasCaro
+miCarta.ProductoMasCaro();
