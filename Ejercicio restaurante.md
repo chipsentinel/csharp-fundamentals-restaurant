@@ -189,6 +189,7 @@ Para cada caso indicar:
 ```csharp
 Producto producto = new Producto(...);
 ```
+#### No compila, porque Producto es una clase abstracta y no se pueden crear objetos directamente de ella.
 
 ### B
 
@@ -196,12 +197,13 @@ Producto producto = new Producto(...);
 Bebida bebida = new Bebida(...);
 Producto producto = bebida;
 ```
-
+#### Sí compila. La variable bebida es de tipo Bebida y el objeto real también es Bebida. Después se guarda en producto, que es de tipo Producto, porque Bebida hereda de Producto.
 ### C
 
 ```csharp
 Producto producto = new Bebida(...);
 ```
+#### Sí compila. La variable es de tipo Producto, pero el objeto real que contiene es de tipo Bebida.
 
 ### D
 
@@ -209,6 +211,7 @@ Producto producto = new Bebida(...);
 Producto producto = new Bebida(...);
 Bebida bebida = producto;
 ```
+#### No compila directamente, porque producto es de tipo Producto y no se puede asignar automáticamente a una variable Bebida. Habría que comprobar antes si realmente es una Bebida y hacer una conversión.
 
 ### E
 
@@ -219,6 +222,7 @@ productos.Add(new Bebida(...));
 productos.Add(new Postre(...));
 productos.Add(new Entrante(...));
 ```
+#### Sí compila. La lista es de tipo List<Producto>, pero puede contener bebidas, postres y entrantes porque todas esas clases heredan de Producto.
 
 ### F
 
@@ -227,6 +231,7 @@ Producto producto = new Bebida(...);
 
 Console.WriteLine(producto.ObtenerDescripcion());
 ```
+#### Sí compila. La variable está declarada como Producto, pero el objeto real es una Bebida. Al llamar a ObtenerDescripcion(), se ejecuta la versión de Bebida gracias al polimorfismo.
 
 Después de responder, comprobar los resultados ejecutando los fragmentos necesarios.
 
