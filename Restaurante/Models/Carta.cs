@@ -37,15 +37,72 @@ public class Carta
         Console.Write("\n¿Qué producto quieres? ");
         string entrada = Console.ReadLine();
 
-        if (int.TryParse(entrada, out int numeroProducto))
+        if (!int.TryParse(entrada, out int numeroProducto))
         {
-            if (numeroProducto >= 1 && numeroProducto <= carta.Count)
+            if (double.TryParse(entrada, out _)) // Compruebo si es decimal, pero no necesito guardar su valor.
             {
-                return carta[numeroProducto - 1];
+                Console.WriteLine("Debes introducir un número entero.");
+            }
+            else
+            {
+                Console.WriteLine("Debes introducir un número.");
+            }
+
+            return null;
+        }
+
+        if (numeroProducto < 1 || numeroProducto > carta.Count)
+        {
+            Console.WriteLine("Ese producto no existe.");
+            return null;
+        }
+
+        return carta[numeroProducto - 1]; // La lista empieza en 0 y la selección del usuario en 1.
+    }
+
+
+    public Producto? BuscarProductoPorNombre()
+    {
+        Console.Write("\nProducto a buscar:");
+        string nombreBuscado = Console.ReadLine();
+
+        foreach (Producto producto in carta)
+        {
+            if (producto.Nombre.Equals(nombreBuscado, StringComparison.OrdinalIgnoreCase))
+            {
+                return producto;
             }
         }
-        
         return null;
-        
+    }
+
+    public void BuscarProductoPorPrecio()
+    {
+        Console.Write("\n Precio máximo:");
+        string entrada = Console.ReadLine();
+
+        if(!decimal.TryParse(entrada, out decimal precioMaximo))
+        {
+            Console.WriteLine("Debes introducir un precio válido");
+            return;
+        }
+
+        bool encontrado = false;    // Indica si al menos un producto cumple la condición
+
+        Console.WriteLine($"\n Producto de hasta {precioMaximo} €:");
+
+        foreach (Producto producto in carta)
+        {
+            if (producto.Precio <= precioMaximo)    // Incluye los productos cuyo precio coincide con el máximo
+            {
+                Console.WriteLine($"{producto.Nombre} - {producto.Precio} €");
+                encontrado = true;
+            }
+        }
+
+        if (!encontrado)
+        {
+            Console.Write("No hay productos con rango de precio maximo");
+        }
     }
 }

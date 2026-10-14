@@ -85,17 +85,30 @@ miCarta.AgregarProductoCarta(sorbete);
 
 Console.WriteLine(miCarta.ObtenerDescripcion());
 
+// SeleccionarProductoCarta
 // El signo ? indica que el método puede devolver un Producto o null si la selección no es válida.
-Producto? productoElegido = miCarta.SeleccionarProductoCarta();
+Producto? productoEncontradoPorNumero = miCarta.SeleccionarProductoCarta();
+
+    if (productoEncontradoPorNumero != null)
+    {
+        Console.WriteLine("\nHas elegido:");
+        Console.WriteLine(productoEncontradoPorNumero.ObtenerDescripcion());
+    }
+
+// BuascarProductoPorNombre
+Producto? productoEncontradoPorNombre = miCarta.BuscarProductoPorNombre();
+
+    if (productoEncontradoPorNombre != null)
+    {
+        Console.WriteLine("\n Producto encontrado:");
+        Console.WriteLine($"{productoEncontradoPorNombre.Nombre} - {productoEncontradoPorNombre.Precio} €");
+    } 
+    
+    else
+    {
+        Console.WriteLine("Nose ha encontrado el producto");
+    }
 
 
-if (productoElegido != null)
-{
-    Console.WriteLine("\nHas elegido:");
-    Console.WriteLine(productoElegido.ObtenerDescripcion());
-}
-else
-{
-    Console.WriteLine("Debes introducir un número.");
-}
-
+// BuascarProductoPorPrecio
+miCarta.BuscarProductoPorPrecio();
