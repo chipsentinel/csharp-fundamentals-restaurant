@@ -59,7 +59,7 @@ sorbete.Precio = 3.80m;
 sorbete.SeSirveFrio = true;
 sorbete.Azucar = true;
 
-
+/*
 Carta miCarta = new Carta();
 string tituloCarta = "\n=== CARTA DEL RESTAURANTE ===";
 Console.Write(tituloCarta);
@@ -84,6 +84,9 @@ miCarta.AgregarProductoCarta(sorbete);
 
 
 Console.WriteLine(miCarta.ObtenerDescripcion());
+*/
+
+
 
 /*
 // SeleccionarProductoCarta
@@ -115,4 +118,12 @@ Producto? productoEncontradoPorNombre = miCarta.BuscarProductoPorNombre();
 miCarta.BuscarProductoPorPrecio();
 */
 // ProductoMasCaro
-miCarta.ProductoMasCaro();
+// miCarta.ProductoMasCaro();
+
+List<Producto> carta = new List<Producto>
+{
+    cocacola, cafe, patatas, ensaladilla,
+    cachopo, huevos, tarta, sorbete
+};
+
+MenuApp.MostrarCarta(carta);
